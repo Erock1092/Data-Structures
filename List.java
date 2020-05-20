@@ -1,9 +1,8 @@
-package strucs;
 public interface List<E>{
 
     public int size();
     public boolean add(E e);
-    public void add(int index, E element);
+    //public void add(int index, E element);
     public void clear();
     public boolean contains(Object o);
     public boolean equals(Object o);
