@@ -1,4 +1,4 @@
-package util;
+package strucs;
 public interface List<E>{
 
     public int size();
