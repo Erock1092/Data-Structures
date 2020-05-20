@@ -58,7 +58,7 @@ public class Single_Linked_List<E> implements List{
         }
         
     }
-    public void add(int index, E elem){
+    public void add(int index, Object elem){
         if(index < 0 || index >= size){
             throw new IndexOutOfBoundsException();
          
