@@ -1,4 +1,4 @@
-package util;
+package structs;
 import java.util.Objects;
 public class Single_Linked_List<E> implements List{
     private Node head;
