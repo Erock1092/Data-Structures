@@ -94,6 +94,7 @@ public class DoubleLinkedList<E> implements List {
     }
     public void clear(){
         head = null;
+        size = 0;
     }
     public E remove(Object o){
         Node temp = head;
