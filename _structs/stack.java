@@ -4,7 +4,7 @@ public class Stack<E>{
     Object[] data;
     private static final int DEFAULT_CAPACITY = 10;
     private int size = 0;
-    public stack(){
+    public Stack(){
         data = new Object[DEFAULT_CAPACITY];
     }
     public Stack(int capacity){
