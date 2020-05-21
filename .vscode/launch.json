@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - ArrayList",
+            "request": "launch",
+            "mainClass": "_structs.ArrayList",
+            "projectName": "Data-Structures_b9120a33"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch) - Current File",
             "request": "launch",
             "mainClass": "${file}"
