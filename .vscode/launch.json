@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Hello_World<Data-Structures_b9120a33>",
+            "request": "launch",
+            "mainClass": "Hello_World",
+            "projectName": "Data-Structures_b9120a33"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-DoubleLinkedList<Data-Structures_b9120a33>",
+            "request": "launch",
+            "mainClass": "_structs.DoubleLinkedList",
+            "projectName": "Data-Structures_b9120a33"
+        }
+    ]
+}
