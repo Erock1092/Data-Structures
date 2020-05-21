@@ -1,6 +1,6 @@
 package _structs;
 import java.util.Objects;
-public class Single_Linked_List<E> implements List{
+public class SingleLinkedList<E> implements List{
     private Node head;
     private int size;
     private class Node{
@@ -14,7 +14,7 @@ public class Single_Linked_List<E> implements List{
     /*
     Default Constructor initializes empty list with null head
     */
-    public Single_Linked_List(){
+    public SingleLinkedList(){
         size = 0;
         head = null;
     }
@@ -23,7 +23,7 @@ public class Single_Linked_List<E> implements List{
     @param o the head of the list
 
     */
-    public Single_Linked_List(Object o){
+    public SingleLinkedList(Object o){
         size = 1;
         head = new Node(o);
     }
