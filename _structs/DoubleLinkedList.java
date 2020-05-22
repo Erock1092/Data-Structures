@@ -13,7 +13,7 @@ public class DoubleLinkedList<E> implements List {
         @author Eric Ackley
         @version 1.0
     */
-    private class Node<E>{
+    private class Node{
         private Node last = null;
         private Node next = null;
         private E data;
