@@ -24,7 +24,7 @@ public class ArrayList<E> implements List {
         @param data the array being cast to ArrayList
     */
     public ArrayList(Object[] data){
-        this.data = Arrays.copyOf(data, data.length + (data.length >> 1));
+        this.data = (E[])Arrays.copyOf(data, data.length + (data.length >> 1));
         size = data.length - Collections.frequency(Arrays.asList(data), null);
         
     }
@@ -147,6 +147,6 @@ public class ArrayList<E> implements List {
     }
     
 
-    
+
     
 }
