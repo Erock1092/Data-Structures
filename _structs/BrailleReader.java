@@ -46,7 +46,7 @@ public class BrailleReader {
         return inputReader.nextLine().split("\s");
         
     }
-    public static void translate(String [] sentence){
+    private static void translate(String [] sentence){
         
         for(String s: sentence){
             braille.add(translateWord(s));
@@ -68,6 +68,10 @@ public class BrailleReader {
         String[] input = new String[WORD_CAPACITY]; 
         while(true){
            input = getInput();
+           if(input[0].equalsIgnoreCase("exit")){
+               System.out.println("Goodbye");
+                System.exit(0);
+           }
            translate(input);
 
 
