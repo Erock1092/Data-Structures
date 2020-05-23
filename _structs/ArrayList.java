@@ -80,7 +80,7 @@ public class ArrayList<E> implements List {
     }
 
     @Override
-    public Object get(int index) {
+    public E get(int index) {
         if(index > size){
             throw new ArrayIndexOutOfBoundsException();
         }
@@ -105,7 +105,7 @@ public class ArrayList<E> implements List {
     }
 
     @Override
-    public Object remove(int index) {
+    public E remove(int index) {
         Object temp = data[index]; 
         for(int i = index; i < size; i++){
             data[i] = data[i + 1];
@@ -115,7 +115,7 @@ public class ArrayList<E> implements List {
     }
 
     @Override
-    public Object remove(Object o) {
+    public E remove(Object o) {
         if(contains(o) && !o.equals(null)){
             int index = indexOf(o);
             return remove(index);
