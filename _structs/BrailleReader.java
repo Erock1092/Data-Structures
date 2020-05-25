@@ -8,11 +8,16 @@ import java.util.LinkedList;
 import java.util.Iterator;
 public class BrailleReader {
     private static final int WORD_CAPACITY = 10;
+    private static final String [] braille_space = {"\s", "\s", "\s", "\s", "\s", "\s", "\s"};
+
     private static HashMap<Character, String> dictionary = new HashMap<Character, String>();
     private static LinkedList<String []> braille = new LinkedList<String []>();
+
     // change this to the filePath braille.txt is saved in
-    static String fileName = "D:\\Java_Practice\\Data-Structures\\_structs\\braille.txt";
-    static Scanner inputReader = new Scanner(System.in);
+    private static String fileName = "D:\\Java_Practice\\Data-Structures\\_structs\\braille.txt";
+    private static Scanner inputReader = new Scanner(System.in);
+
+
     public static void init(){
         File braille = new File(fileName);
         try{
@@ -50,6 +55,7 @@ public class BrailleReader {
         
         for(String s: sentence){
             braille.add(translateWord(s));
+            braille.add(braille_space);
         }
         int braillePiece = 0;
         for(int i = 0; i < 3; i++){
@@ -57,11 +63,13 @@ public class BrailleReader {
             while(iterator.hasNext()){
                 
                 System.out.printf("%s", iterator.next()[braillePiece]);
+                
                
             }
             braillePiece++;
             System.out.println();
         }
+        braille.clear();
     }
     public static void main(String[] args) {
         BrailleReader.init();
