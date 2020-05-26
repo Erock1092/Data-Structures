@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.Iterator;
 public class BrailleReader {
     private static final int WORD_CAPACITY = 10;
-    private static final String [] braille_space = {"\s", "\s", "\s", "\s", "\s", "\s", "\s"};
+    private static final String [] BRAILLE_SPACE = {"\s", "\s", "\s"};
 
     private static HashMap<Character, String> dictionary = new HashMap<Character, String>();
     private static LinkedList<String []> braille = new LinkedList<String []>();
@@ -55,7 +55,7 @@ public class BrailleReader {
         
         for(String s: sentence){
             braille.add(translateWord(s));
-            braille.add(braille_space);
+            braille.add(BRAILLE_SPACE);
         }
         int braillePiece = 0;
         for(int i = 0; i < 3; i++){
