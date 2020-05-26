@@ -26,7 +26,7 @@ public class BinarySearchTree<T extends Comparable> implements Iterable<T> {
         root = null;
     }
 
-    public BinarySearchTree(E data) {
+    public BinarySearchTree(T data) {
         root = new Node(data);
         size = 1;
     }
@@ -63,13 +63,34 @@ public class BinarySearchTree<T extends Comparable> implements Iterable<T> {
         return null;
     }
    public void inorderTraversal(){
-      
+      inorder(root);
+   }
+   public void preorderTraversal(){
+       preorder(root);
+   }
+   public void postorderTraversal(){
+       postorder(root);
    }
    private void inorder(Node root){
         if(!root.equals(null)){
             inorder(root.left);
-            System.out.print("%s\s\s", root.data);
+            System.out.printf("%s\s\s", root.data);
             inorder(root.right);
         }
-   } 
+   }
+   private void preorder(Node root){
+       if(!root.equals(null)){
+            System.out.printf("%s\s\s", root.data);
+            preorder(root.left);
+            preorder(root.right);
+        }
+
+   }
+   private void postorder(Node root){
+       if(!root.equals(null)){
+           postorder(root.left);
+           postorder(root.right);
+           System.out.printf("%s\s\s", root.data);
+        }
+   }
 }
