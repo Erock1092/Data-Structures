@@ -106,7 +106,7 @@ public class ArrayList<E> implements List {
 
     @Override
     public E remove(int index) {
-        Object temp = data[index]; 
+        E temp = data[index]; 
         for(int i = index; i < size; i++){
             data[i] = data[i + 1];
         }
