@@ -32,7 +32,7 @@ public class BinarySearchTree<T extends Comparable>{
 
     protected boolean insert(Node item, Node node) {
         if (item.compareTo(node) < 0) {
-            if(node.left.equals(null)){
+            if(node.left == null){
                 node.left = item;
             }
             else{
@@ -40,7 +40,7 @@ public class BinarySearchTree<T extends Comparable>{
             }
         }
         else if(item.compareTo(node) >= 0){
-            if(node.right.equals(null)){
+            if(node.right == null){
                 node.right= item;
             }
             else{
@@ -54,6 +54,11 @@ public class BinarySearchTree<T extends Comparable>{
         return insert(item, root);
     }
     public boolean insert(T data){
+        if(root.data == null){
+
+            root = new Node(data);
+            return true;
+        }
         return insert(new Node(data));
     }
    
@@ -67,26 +72,36 @@ public class BinarySearchTree<T extends Comparable>{
        postorder(root);
    }
    private void inorder(Node root){
-        if(!root.equals(null)){
+
+    if(!(root.left == null))
             inorder(root.left);
-            System.out.printf("%s\s\s", root.data);
+
+    System.out.printf("%s\s\s", root.data);
+
+    if(!(root.right == null))
             inorder(root.right);
-        }
+        
+        
    }
    private void preorder(Node root){
-       if(!root.equals(null)){
-            System.out.printf("%s\s\s", root.data);
-            preorder(root.left);
-            preorder(root.right);
-        }
 
+            System.out.printf("%s\s\s", root.data);
+
+            if(!(root.left == null))
+                preorder(root.left);
+            if(!(root.right == null))
+                preorder(root.right);
+        
+         
    }
    private void postorder(Node root){
-       if(!root.equals(null)){
-           postorder(root.left);
-           postorder(root.right);
+    if(!(root.left == null))
+        postorder(root.left);
+    if(!(root.right == null))    
+        postorder(root.right);
+
            System.out.printf("%s\s\s", root.data);
-        }
+        
    }
    public int size(){
        return size;
@@ -111,53 +126,8 @@ public class BinarySearchTree<T extends Comparable>{
         }
         return null;
    }
-   protected Node contains(Node node, T item){
-       int compare = item.compareTo(node.data);
-       if(compare == 0){
-           return node;
-        }
-        else if(compare < 0){
-            contains(node.left, item);
-        }
-        else{
-            contains(node.right, item);}
-        return null;
-        
-    }
-    public boolean contains(T item){
-        return !contains(root, item).equals(null);
-    }
     public boolean isEmpty(){
         return size() == 0;
     }
-    public boolean remove(T item){
-        return !remove(item, root).equals(null);
-    }
-    protected Node remove(T item, Node node){
-        if(contains(item)){
-            if(item.compareTo(node.data) == 0){
-                Node temp = node;
-                node.data = removeMinumum(node.right);
-                size--;
-                return temp;
-            }
-            else if(item.compareTo(node.data) < 0){
-                remove(item, node.left);
-            }
-            else if(item.compareTo(node.data) > 0){
-                remove(item, node.right);
-            }
-        }
-        return null;
-    }
-    protected T removeMinumum(Node node){
-        Node temp = node;
-        while(!temp.equals(null)){
-            temp = temp.left;
 
-    }
-        T data = (T) temp.data;
-        node = null;
-        return data;
-    }
 }
