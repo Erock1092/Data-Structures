@@ -28,7 +28,14 @@ public class Hashmap<K,V> {
     }
     private LinkedList<HashNode>[] hashmap;
     public Hashmap(){
+        hashmap = new LinkedList[SIZE];
         for(int i = 0; i < SIZE; i++){
+            hashmap[i] = new LinkedList<HashNode>();
+        }
+    }
+    public Hashmap(int size){
+        hashmap = new LinkedList[size];
+        for(int i = 0; i < size; i++){
             hashmap[i] = new LinkedList<HashNode>();
         }
     }
@@ -63,17 +70,13 @@ public class Hashmap<K,V> {
         return null;
     }
     private int containsKeyAt(K key, LinkedList<HashNode> lis){
-            HashNode temp =  lis.element();
-           if(temp.containsKey(key)){
-               return 0;
-           }
-           else{
-               for(int i = 1; i < lis.size(); i++){
+
+               for(int i = 0; i < lis.size(); i++){
                    if(lis.get(i).containsKey(key)) {
                        return i;
                    }
                }
-           }
+
            return NOT_FOUND;
     }
     public void clear(){
