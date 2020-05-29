@@ -6,9 +6,12 @@ import java.util.LinkedList;
 public class Hashmap<K,V> {
     private final static int SIZE = 10;
     private final static int NOT_FOUND = -1;
+    private int numberOfMappings = 0;
+    
     private class HashNode{
         private K key;
         private V value;
+
         public HashNode(K key, V value){
             this.key = key;
             this.value = value;
@@ -26,6 +29,7 @@ public class Hashmap<K,V> {
             this.value = value;
         }
     }
+
     private LinkedList<HashNode>[] hashmap;
     public Hashmap(){
         hashmap = new LinkedList[SIZE];
@@ -58,6 +62,7 @@ public class Hashmap<K,V> {
                 hashmap[hash].get(indexOfKey).setValue(value); 
             }
         }
+        numberOfMappings++;
     }
     public V get(K key){
         int hash = computeHash(key);
@@ -83,6 +88,27 @@ public class Hashmap<K,V> {
         for(LinkedList<HashNode> lis: hashmap){
             lis.clear();
         }
+        numberOfMappings = 0;
     }
-    
+    public boolean isEmpty(){
+        return numberOfMappings == 0;
+    }
+    public V replace(K key, V value){
+        int keyIndex = containsKeyAt(key, hashmap[computeHash(key)]);
+        if(keyIndex == -1){
+            return null;
+        }
+        V oldValue = null;
+        for(int i = 0; i < hashmap[computeHash(key)].size(); i++){
+            HashNode node = hashmap[computeHash(key)].get(i);
+            K nodeKey = node.key;
+            if(nodeKey == key){
+                oldValue = node.value;
+                node.setValue(value);
+                return oldValue;
+            }
+        }
+        return oldValue;
+
+    }
 }
