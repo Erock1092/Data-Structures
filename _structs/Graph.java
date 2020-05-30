@@ -58,13 +58,4 @@ public class Graph<T> {
         }
         return string.toString();
     }
-    public static void main(String[] args) {
-        Graph <Integer> g = new Graph<Integer>();
-        g.addVertex(5);
-        g.addVertex(7);
-        g.connect(5, 7);
-        g.addVertex(6);
-        g.connect(6, 7);
-        System.out.printf(g.toString());
-    }
 }
