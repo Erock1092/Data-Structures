@@ -15,6 +15,13 @@ public class BinarySearchTree<T extends Comparable>{
 
             return data.compareTo(node.data);
         }
+        public String toString(){
+            if(data != null)
+                return data.toString();
+            else{
+                return "";
+            }  
+        }
     }
 
     private Node root = null;
@@ -76,7 +83,7 @@ public class BinarySearchTree<T extends Comparable>{
     if(!(root.left == null))
             inorder(root.left);
 
-    System.out.printf("%s\s\s", root.data);
+    System.out.printf("%s\s\s", root.toString());
 
     if(!(root.right == null))
             inorder(root.right);
@@ -108,8 +115,8 @@ public class BinarySearchTree<T extends Comparable>{
    }
  
    protected T get(T item){
-       Node temp = root;
-       if(temp == root)
+       Node temp = new Node(item);
+       if(temp.equals(root))
         return (T)root.data;
 
         while(!item.equals(temp.data)){
@@ -138,6 +145,7 @@ public class BinarySearchTree<T extends Comparable>{
         return data;
     }
     protected Node delete(T data, Node node){
+
         if(node == null) return node;
         
         if(data.compareTo(node.data) > 0){
@@ -158,6 +166,7 @@ public class BinarySearchTree<T extends Comparable>{
             else if(node.right == null){
                 return node.left;
             }
+
             node.data = getMin(node.right);
             node.right = delete((T) node.data, node.right);
         }
@@ -187,9 +196,7 @@ public class BinarySearchTree<T extends Comparable>{
   
         System.out.println("Inorder traversal of the given tree"); 
         tree.inorderTraversal(); 
-  
-        System.out.println("\nDelete 20"); 
-        tree.delete(20); 
+
         System.out.println("Inorder traversal of the modified tree"); 
         tree.inorderTraversal(); 
   
