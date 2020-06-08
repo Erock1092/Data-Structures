@@ -8,6 +8,7 @@ public class BinarySearchTree<T extends Comparable>{
         private Node right = null;
         private T data;
 
+
         protected Node(T data) {
             this.data = data;
         }
@@ -54,6 +55,7 @@ public class BinarySearchTree<T extends Comparable>{
                 insert(item, node.right);
             }
         }
+
         size++;
         return true;
     }
@@ -147,31 +149,49 @@ public class BinarySearchTree<T extends Comparable>{
     protected Node delete(T data, Node node){
 
         if(node == null) return node;
-        
-        if(data.compareTo(node.data) > 0){
-                
-            delete(data, node.right);
-            
-        }
-            
-        else if(data.compareTo(node.data) < 0){
-                
-            delete(data, node.left);
-            
-        }
-        else{
-            if(node.left == null){
-                return node.right;
-            }
-            else if(node.right == null){
-                return node.left;
-            }
+        int compare = data.compareTo(node.data);
 
-            node.data = getMin(node.right);
-            node.right = delete((T) node.data, node.right);
+        if(compare ==  0){
+                
+            if(node.left == null && node.right == null){
+                if(node.equals(root)){
+                    this.root = null;
+                }
+                node = null;
+                return null;
+            }
+            
+          
+            else if(node.left != null && node.right !=  null){
+                
+                Node temp = node;
+                T min = getMin(temp.right);
+                node.data = min;
+                delete(min, node.right);
+                return null;
+            
+            }
         }
-        return node;
-    }
+        if(compare < 0){
+            if(node.left.data.equals(data)){
+                if(node.left.left == null || node.left.right == null){
+                    node.left = node.left.right;
+                    return null;
+                }
+            }
+            return delete(data, node.left);
+        }
+        if(compare > 0){
+            if(node.right.data.equals(data)){
+                if(node.right.right == null || node.right.left == null){
+                    node.right = node.right.left;
+                    return null;
+                }
+                return delete(data, node.right);
+            }
+        }
+            return null;
+        }
     
     public void delete(T data){
         delete(data, root);
@@ -196,7 +216,8 @@ public class BinarySearchTree<T extends Comparable>{
   
         System.out.println("Inorder traversal of the given tree"); 
         tree.inorderTraversal(); 
-
+        System.out.println("\nDelete 20"); 
+        tree.delete(20);
         System.out.println("Inorder traversal of the modified tree"); 
         tree.inorderTraversal(); 
   
@@ -208,6 +229,6 @@ public class BinarySearchTree<T extends Comparable>{
         System.out.println("\nDelete 50"); 
         tree.delete(50); 
         System.out.println("Inorder traversal of the modified tree"); 
-        tree.inorderTraversal(); 
+        tree.preorderTraversal(); 
     } 
 }
