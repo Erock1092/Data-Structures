@@ -4,15 +4,15 @@ package _structs;
 public class BinarySearchTree<T extends Comparable>{
 
     protected class Node<T extends Comparable> {
-        private Node left = null;
-        private Node right = null;
+        private Node<T> left = null;
+        private Node<T> right = null;
         private T data;
-
+        
 
         protected Node(T data) {
             this.data = data;
         }
-        private int compareTo(Node node){
+        private int compareTo(Node<T> node){
 
             return data.compareTo(node.data);
         }
@@ -25,9 +25,9 @@ public class BinarySearchTree<T extends Comparable>{
         }
     }
 
-    private Node root = null;
+    private Node<T> root = null;
 
-    protected int size = 0;
+    private int size = 0;
 
     public BinarySearchTree() {
         root = null;
@@ -38,7 +38,7 @@ public class BinarySearchTree<T extends Comparable>{
         size = 1;
     }
 
-    protected boolean insert(Node item, Node node) {
+    private boolean insert(Node<T> item, Node<T> node) {
         if (item.compareTo(node) < 0) {
             if(node.left == null){
                 node.left = item;
@@ -59,8 +59,8 @@ public class BinarySearchTree<T extends Comparable>{
         size++;
         return true;
     }
-    protected boolean insert(Node item){
-        return insert(item, root);
+    private boolean insert(Node<T> node){
+        return insert(node, root);
     }
     public boolean insert(T data){
         if(root == null){
@@ -80,7 +80,7 @@ public class BinarySearchTree<T extends Comparable>{
    public void postorderTraversal(){
        postorder(root);
    }
-   private void inorder(Node root){
+   private void inorder(Node<T> root){
 
     if(!(root.left == null))
             inorder(root.left);
@@ -92,7 +92,7 @@ public class BinarySearchTree<T extends Comparable>{
         
         
    }
-   private void preorder(Node root){
+   private void preorder(Node<T> root){
 
             System.out.printf("%s\s\s", root.data);
 
@@ -103,7 +103,7 @@ public class BinarySearchTree<T extends Comparable>{
         
          
    }
-   private void postorder(Node root){
+   private void postorder(Node<T> root){
     if(!(root.left == null))
         postorder(root.left);
     if(!(root.right == null))    
@@ -117,7 +117,7 @@ public class BinarySearchTree<T extends Comparable>{
    }
  
    protected T get(T item){
-       Node temp = new Node(item);
+       Node<T> temp = new Node(item);
        if(temp.equals(root))
         return (T)root.data;
 
@@ -138,7 +138,7 @@ public class BinarySearchTree<T extends Comparable>{
     public boolean isEmpty(){
         return size() == 0;
     }
-    protected T getMin(Node node){
+    protected T getMin(Node<T> node){
         T data = (T) node.data;
         while(node.left != null){
             data = (T) node.data;
@@ -146,7 +146,7 @@ public class BinarySearchTree<T extends Comparable>{
         }
         return data;
     }
-    protected Node delete(T data, Node node){
+    protected Node<T> delete(T data, Node<T> node){
 
         if(node == null) return node;
         int compare = data.compareTo(node.data);
@@ -164,7 +164,7 @@ public class BinarySearchTree<T extends Comparable>{
           
             else if(node.left != null && node.right !=  null){
                 
-                Node temp = node;
+                Node<T> temp = node;
                 T min = getMin(temp.right);
                 node.data = min;
                 delete(min, node.right);
@@ -198,7 +198,7 @@ public class BinarySearchTree<T extends Comparable>{
     }
     public static void main(String[] args) 
     { 
-        BinarySearchTree tree = new BinarySearchTree(); 
+        BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>(); 
   
         /* Let us create following BST 
               50 
